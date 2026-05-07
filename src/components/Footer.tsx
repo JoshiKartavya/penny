@@ -38,7 +38,7 @@ export default function Footer() {
             © 2026 Penny. All rights reserved.
           </div>
           <div className="italic">
-            made with care. no bloat.
+            Built to be used. Not abandoned.
           </div>
         </div>
         

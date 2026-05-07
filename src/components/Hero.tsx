@@ -9,38 +9,64 @@ export default function Hero() {
 
       {/* Main Heading */}
       <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight mb-6">
-        your money.<br />simplified.
+       Stop guessing where your money goes.
       </h1>
 
       {/* Subtext */}
       <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
-        You don't need another finance app. You need to remember the ₹80 you spent on coffee. <strong className="text-black font-semibold">That's the whole product.</strong>
+        Most expense apps are overloaded with features you never use. <strong className="text-black font-semibold">PennyWallet helps you track spending in seconds.</strong>
       </p>
 
-      {/* Offer Pill */}
-      <div className="inline-flex items-center space-x-2 bg-white border border-gray-100 px-4 py-2 rounded-full text-sm text-gray-600 mb-8 shadow-sm">
-        <span>📅</span>
-        <span>
-          <strong className="text-black font-semibold">1 year of Pro — free</strong>, for everyone who joins before launch.
-        </span>
+      {/* Offer Features (Waitlist incentive) */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-10 text-sm font-semibold text-gray-700">
+        <div className="flex items-center space-x-2">
+          <div className="w-5 h-5 bg-[#23c55e]/20 rounded-full flex items-center justify-center">
+            <svg className="w-3 h-3 text-[#23c55e]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          <span>Get lifetime premium free</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="w-5 h-5 bg-[#23c55e]/20 rounded-full flex items-center justify-center">
+            <svg className="w-3 h-3 text-[#23c55e]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          <span>Early access before launch</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="w-5 h-5 bg-[#23c55e]/20 rounded-full flex items-center justify-center">
+            <svg className="w-3 h-3 text-[#23c55e]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          <span>Help shape the app</span>
+        </div>
       </div>
 
-      {/* Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-4">
-        <button className="bg-black text-white px-6 py-3 rounded-full font-medium flex items-center space-x-2 hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-          <span>claim my year of pro</span>
-        </button>
-        <button className="bg-white text-black border border-gray-200 px-6 py-3 rounded-full font-medium flex items-center space-x-2 hover:bg-gray-50 transition-colors shadow-sm w-full sm:w-auto justify-center">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <span>see how it works</span>
-        </button>
+      {/* Email Form */}
+      <div className="w-full max-w-md mx-auto mb-8">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <input 
+            type="email" 
+            placeholder="your@email.com" 
+            className="flex-grow bg-white border border-gray-200 rounded-full px-6 py-4 text-base outline-none focus:border-black focus:ring-1 focus:ring-black transition-all shadow-sm" 
+          />
+          <button className="bg-black text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-gray-800 transition-all shadow-md w-full sm:w-auto whitespace-nowrap">
+            <span>Get Early Access</span>
+          </button>
+        </div>
       </div>
+
+      {/* Social Proof */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-medium text-gray-500 bg-gray-50 border border-gray-100 rounded-2xl px-6 py-3">
+        <div className="flex items-center space-x-2">
+          <div className="flex -space-x-2 mr-1">
+             <img src="https://i.pravatar.cc/100?img=11" alt="User" className="w-7 h-7 rounded-full border-2 border-white shadow-sm" />
+             <img src="https://i.pravatar.cc/100?img=33" alt="User" className="w-7 h-7 rounded-full border-2 border-white shadow-sm" />
+             <img src="https://i.pravatar.cc/100?img=44" alt="User" className="w-7 h-7 rounded-full border-2 border-white shadow-sm" />
+          </div>
+          <span>Built after testing 15+ expense apps.</span>
+        </div>
+        <span className="hidden sm:inline text-gray-300">|</span>
+        <span>Designed for simplicity-first users.</span>
+      </div>
+
     </section>
   );
 }

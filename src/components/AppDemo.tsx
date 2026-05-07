@@ -6,7 +6,7 @@ export default function AppDemo() {
           The App
         </div>
         <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-black">
-          just a wallet. <em className="italic text-gray-400">and a log.</em>
+          Your money. <em className="italic text-gray-400">Without the noise.</em>
         </h2>
       </div>
 
@@ -145,7 +145,7 @@ export default function AppDemo() {
 
         <div className="text-center relative z-10 mt-12">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-black">
-            two screens. one habit. zero friction.
+            Track. Check. Move on.
           </h2>
         </div>
       </div>

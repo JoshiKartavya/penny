@@ -11,15 +11,20 @@ export default function AboutSection() {
 
       <div className="space-y-8 text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
         <p>
-          Every expense tracker I tried was built for someone I'm not. Someone who gets a thrill from charts. Who wants five sub-categories for a ₹10 chai. Who actually finishes the onboarding.
+          I tried every expense tracker I could find.
         </p>
-        
         <p>
-          I just wanted to know if I had enough money for dinner. So I built the smallest possible app that could answer that — and nothing else.
+          They all wanted me to manage categories, budgets, and reports.
         </p>
-
         <p>
-          No bank logins. No categories. No budgets that make you feel guilty by Wednesday. Just two numbers — what came in, what went out — and the calm of finally seeing them clearly.
+          But most days, I just wanted one thing:<br />
+          to know how much money I had left.
+        </p>
+        <p>
+          So I built Penny.
+        </p>
+        <p>
+          A simpler way to track money without turning it into work.
         </p>
       </div>
 

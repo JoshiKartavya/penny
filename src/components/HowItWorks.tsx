@@ -14,27 +14,30 @@ export default function HowItWorks() {
           {/* Step 1 */}
           <div className="relative">
             <div className="absolute -top-10 -left-4 text-9xl font-black italic text-gray-100 -z-10 select-none">01</div>
-            <h3 className="text-xl font-bold italic mb-4">money came in</h3>
+            <h3 className="text-xl font-bold italic mb-4">Add income</h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Tap +. Type 2000. That's the entire flow. No category. No memo unless you want one.
+              Salary. Freelance. Cash.<br />
+              Log it in seconds.
             </p>
           </div>
 
           {/* Step 2 */}
           <div className="relative">
             <div className="absolute -top-10 -left-4 text-9xl font-black italic text-gray-100 -z-10 select-none">02</div>
-            <h3 className="text-xl font-bold italic mb-4">money went out</h3>
+            <h3 className="text-xl font-bold italic mb-4">Add expense</h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Chai ₹10. Cab ₹80. Lunch ₹120. Tap - each time. Five seconds. Then close the app.
+              Spent something? Add it fast.<br />
+              No categories required.
             </p>
           </div>
 
           {/* Step 3 */}
           <div className="relative">
             <div className="absolute -top-10 -left-4 text-9xl font-black italic text-gray-100 -z-10 select-none">03</div>
-            <h3 className="text-xl font-bold italic mb-4">look back, anytime</h3>
+            <h3 className="text-xl font-bold italic mb-4">See what's left</h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Tap ↗ when you wonder where it all went. One number. Today, this week, ever.
+              Know your balance instantly.<br />
+              No math in your head.
             </p>
           </div>
         </div>

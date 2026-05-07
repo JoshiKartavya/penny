@@ -6,20 +6,19 @@ export default function ProblemSection() {
       </div>
       
       <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-12 leading-tight">
-        every tracker does <em className="italic">too much.</em>
+        Most finance apps are built for accountants. Not normal people.
       </h2>
 
       <div className="space-y-8 text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
         <p>
-          You download the app. It asks you to set a budget. Then categories. Then it wants your bank login. Then it shows you a pie chart of the ₹3 you spent on parking.
-        </p>
-        
-        <p>
-          Two weeks later, you stop opening it. Same as the last six apps.
-        </p>
+          You open an expense app.
+It asks for budgets, categories, savings goals, bank syncs.
 
-        <p>
-          You didn't need any of that. You just wanted to remember you spent ₹80 on coffee this morning.
+Before you track ₹10 chai, you’ve spent 10 minutes setting it up.
+
+Not because you don’t care.
+
+Because tracking money shouldn’t feel like work.
         </p>
       </div>
 
