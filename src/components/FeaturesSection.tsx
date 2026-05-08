@@ -5,48 +5,48 @@ export default function FeaturesSection() {
         Features
       </div>
       
-      <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-16">
+      <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-16 text-black dark:text-white transition-colors duration-300">
         Everything you need. <em className="italic text-gray-400">Nothing you don't.</em>
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Card 1 */}
-        <div className="bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 flex flex-col items-start transition-transform hover:-translate-y-2 duration-300">
-          <div className="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center mb-6">
+        <div className="bg-white dark:bg-[#111] rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 dark:border-gray-800 flex flex-col items-start transition-all hover:-translate-y-2 duration-300">
+          <div className="w-12 h-12 bg-black text-white dark:bg-white dark:text-black rounded-xl flex items-center justify-center mb-6 transition-colors duration-300">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
             </svg>
           </div>
-          <h3 className="text-xl font-bold italic mb-4">Track instantly</h3>
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <h3 className="text-xl font-bold italic mb-4 text-black dark:text-white transition-colors duration-300">Track instantly</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-300">
             Tap. Enter amount. Done.<br />
             Faster than opening notes.
           </p>
         </div>
 
         {/* Card 2 */}
-        <div className="bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 flex flex-col items-start transition-transform hover:-translate-y-2 duration-300">
-          <div className="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center mb-6">
+        <div className="bg-white dark:bg-[#111] rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 dark:border-gray-800 flex flex-col items-start transition-all hover:-translate-y-2 duration-300">
+          <div className="w-12 h-12 bg-black text-white dark:bg-white dark:text-black rounded-xl flex items-center justify-center mb-6 transition-colors duration-300">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
           </div>
-          <h3 className="text-xl font-bold italic mb-4">Know your balance</h3>
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <h3 className="text-xl font-bold italic mb-4 text-black dark:text-white transition-colors duration-300">Know your balance</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-300">
             No charts. No reports.<br />
             Just one honest number.
           </p>
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 flex flex-col items-start transition-transform hover:-translate-y-2 duration-300">
-          <div className="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center mb-6">
+        <div className="bg-white dark:bg-[#111] rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-50 dark:border-gray-800 flex flex-col items-start transition-all hover:-translate-y-2 duration-300">
+          <div className="w-12 h-12 bg-black text-white dark:bg-white dark:text-black rounded-xl flex items-center justify-center mb-6 transition-colors duration-300">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
           </div>
-          <h3 className="text-xl font-bold italic mb-4">Your money timeline</h3>
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <h3 className="text-xl font-bold italic mb-4 text-black dark:text-white transition-colors duration-300">Your money timeline</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed transition-colors duration-300">
             Every expense. Every income.<br />
             Saved in order, always there.
           </p>

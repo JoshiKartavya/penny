@@ -47,7 +47,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#fafafa]">
+    <main ref={containerRef} className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
       <Header />
       
       <div className="animate-section">

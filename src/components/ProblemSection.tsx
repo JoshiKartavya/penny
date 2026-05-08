@@ -5,11 +5,11 @@ export default function ProblemSection() {
         The Problem
       </div>
       
-      <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-12 leading-tight">
+      <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-12 leading-tight text-black dark:text-white transition-colors duration-300">
         Most finance apps are built for accountants. Not normal people.
       </h2>
 
-      <div className="space-y-8 text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
+      <div className="space-y-8 text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-medium transition-colors duration-300">
         <p>
           You open an expense app.
 It asks for budgets, categories, savings goals, bank syncs.
@@ -22,7 +22,7 @@ Because tracking money shouldn’t feel like work.
         </p>
       </div>
 
-      <h3 className="mt-16 text-4xl md:text-5xl font-extrabold italic tracking-tight">
+      <h3 className="mt-16 text-4xl md:text-5xl font-extrabold italic tracking-tight text-black dark:text-white transition-colors duration-300">
         That's what Penny fixes.
       </h3>
     </section>

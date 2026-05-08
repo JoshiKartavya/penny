@@ -1,12 +1,12 @@
 export default function AppDemo() {
   return (
-    <section className="bg-[#fafafa] w-full pt-0 pb-32 px-4 overflow-hidden relative">
+    <section className="w-full pt-0 pb-32 px-4 overflow-hidden relative">
       <div className="flex flex-col items-center justify-center text-center mb-24 relative z-10">
-        <div className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-4">
+        <div className="text-xs font-bold tracking-widest text-gray-500 dark:text-gray-400 uppercase mb-4">
           The App
         </div>
-        <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-black">
-          Your money. <em className="italic text-gray-400">Without the noise.</em>
+        <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-black dark:text-white transition-colors duration-300">
+          Your money. <em className="italic text-gray-400 dark:text-gray-500">Without the noise.</em>
         </h2>
       </div>
 
@@ -144,7 +144,7 @@ export default function AppDemo() {
         </div>
 
         <div className="text-center relative z-10 mt-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-black">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-black dark:text-white transition-colors duration-300">
             Track. Check. Move on.
           </h2>
         </div>

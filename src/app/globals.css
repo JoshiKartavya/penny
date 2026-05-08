@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable manual dark mode toggle using class strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html.lenis, html.lenis body {
   height: auto;
 }

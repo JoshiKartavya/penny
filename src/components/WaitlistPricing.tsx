@@ -3,25 +3,50 @@
 import { useState } from "react";
 
 export default function WaitlistPricing() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    if (!email) return;
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/join-waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setMessage(data.message || "You're on the list!");
+    } catch (err: any) {
+      setStatus("error");
+      setMessage(err.message || "Failed to join waitlist.");
+    }
   };
 
   return (
-    <section id="pricing" className="pb-32 px-4 max-w-5xl mx-auto bg-[#fafafa]">
+    <section id="pricing" className="pb-32 px-4 max-w-5xl mx-auto">
       <div className="text-center mb-16">
         <div className="mb-6 text-xs font-bold tracking-widest text-gray-400 uppercase">
           The Waitlist
         </div>
         
-        <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-8">
+        <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-8 text-black dark:text-white">
           Get in early. Get Pro free <em className="italic">for a year.</em>
         </h2>
 
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
           Join before launch and lock in your first year of Pro for free.
         </p>
       </div>
@@ -29,25 +54,25 @@ export default function WaitlistPricing() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         
         {/* Left Card: The List */}
-        <div className="bg-white rounded-[2rem] p-8 border-2 border-black/90 shadow-xl flex flex-col relative overflow-hidden">
+        <div className="bg-white dark:bg-[#111] rounded-[2rem] p-8 border-2 border-black/90 dark:border-white/20 shadow-xl flex flex-col relative overflow-hidden transition-colors duration-300">
           <div className="inline-flex items-center space-x-1 bg-[#23c55e]/10 text-[#23c55e] px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase mb-6 self-start">
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             <span>Early Access</span>
           </div>
 
-          <h3 className="text-4xl font-extrabold italic mb-2">the list</h3>
+          <h3 className="text-4xl font-extrabold italic mb-2 text-black dark:text-white">the list</h3>
           <div className="text-sm font-medium mb-8">
-            <span className="font-bold">free</span> <span className="text-gray-400">— takes 10 seconds</span>
+            <span className="font-bold text-black dark:text-white">free</span> <span className="text-gray-400">— takes 10 seconds</span>
           </div>
 
           <div className="bg-[#23c55e]/10 border border-[#23c55e]/20 rounded-2xl p-4 mb-8 flex items-start space-x-3 text-sm">
             <div className="mt-0.5">🎁</div>
-            <div className="text-gray-800 leading-relaxed">
+            <div className="text-gray-800 dark:text-gray-200 leading-relaxed">
               <strong className="font-bold">1 year Pro free</strong> — for everyone who joins before we launch. Tied to your email. No code. No catch.
             </div>
           </div>
 
-          <ul className="space-y-4 mb-10 flex-grow text-sm font-medium text-gray-700">
+          <ul className="space-y-4 mb-10 flex-grow text-sm font-medium text-gray-700 dark:text-gray-300">
             {[
               "1 year Pro free",
               "early access before public launch",
@@ -56,8 +81,8 @@ export default function WaitlistPricing() {
               "zero spam"
             ].map((item, i) => (
               <li key={i} className="flex items-start space-x-3">
-                <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                <div className="w-5 h-5 bg-black dark:bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-3 h-3 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <span>{item}</span>
               </li>
@@ -65,17 +90,32 @@ export default function WaitlistPricing() {
           </ul>
 
           <div className="mt-auto">
-            {!isSubmitted ? (
+            {status !== "success" ? (
               <form onSubmit={handleSubmit} className="flex flex-col mb-4">
                 <div className="flex flex-col sm:flex-row gap-2 mb-3">
-                  <input required type="email" placeholder="your@email.com" className="flex-grow bg-gray-50 border border-gray-200 rounded-full px-5 py-3 text-sm outline-none focus:border-black transition-colors" />
-                  <button type="submit" className="bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors whitespace-nowrap">
-                    Get my early access
+                  <input 
+                    required 
+                    type="email" 
+                    placeholder="your@email.com" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={status === "loading"}
+                    className="flex-grow bg-gray-50 dark:bg-[#1a1a1a] dark:text-white border border-gray-200 dark:border-gray-700 rounded-full px-5 py-3 text-sm outline-none focus:border-black dark:focus:border-white transition-colors disabled:opacity-50" 
+                  />
+                  <button 
+                    type="submit" 
+                    disabled={status === "loading"}
+                    className="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {status === "loading" ? "Joining..." : "Get my early access"}
                   </button>
                 </div>
+                {status === "error" && (
+                  <div className="text-red-500 text-xs font-medium mb-3">{message}</div>
+                )}
                 <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:px-2 gap-2 text-center">
-                  <div className="text-xs font-semibold text-red-500">Early users get Pro free. Ends at launch.</div>
-                  <div className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded-full">127 people joined</div>
+                  <div className="text-xs font-semibold text-green-500">Early users get Pro free. Ends at launch.</div>
+                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-[#1a1a1a] px-2 py-1 rounded-full">127 people joined</div>
                 </div>
               </form>
             ) : (
@@ -84,7 +124,7 @@ export default function WaitlistPricing() {
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <h4 className="text-lg font-bold text-[#23c55e] mb-1">You're in.</h4>
-                <p className="text-sm font-medium text-gray-700">Your Pro year is locked.</p>
+                <p className="text-sm font-medium text-gray-700">{message || "Your Pro year is locked."}</p>
               </div>
             )}
             
@@ -96,14 +136,14 @@ export default function WaitlistPricing() {
         </div>
 
         {/* Right Card: Pro */}
-        <div className="bg-[#f8f9fa] rounded-[2rem] p-8 border border-gray-100 flex flex-col">
-          <div className="inline-flex items-center text-gray-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 self-start border border-gray-200 bg-white">
+        <div className="bg-[#f8f9fa] dark:bg-[#111] rounded-[2rem] p-8 border border-gray-100 dark:border-gray-800 flex flex-col transition-colors duration-300">
+          <div className="inline-flex items-center text-gray-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 self-start border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1a1a1a]">
             What you'll unlock
           </div>
 
-          <h3 className="text-4xl font-extrabold italic mb-2 text-gray-300">premium</h3>
+          <h3 className="text-4xl font-extrabold italic mb-2 bg-gradient-to-r from-[#ffe998] to-[#57370d] bg-clip-text text-transparent">premium</h3>
           <div className="text-sm font-medium mb-12">
-            <span className="line-through text-gray-300 mr-2">₹99 / month</span>
+            <span className="line-through text-gray-300 dark:text-gray-600 mr-2">₹99 / month</span>
             <span className="text-[#23c55e] font-bold">₹0 for 1st year</span>
           </div>
 
@@ -117,7 +157,7 @@ export default function WaitlistPricing() {
             ].map((item, i) => (
               <li key={i} className="flex items-center space-x-3">
                 <div className="w-5 h-5 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                  <svg className="w-3 h-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <span>{item}</span>
               </li>
