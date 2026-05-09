@@ -64,6 +64,44 @@ export async function POST(req: Request) {
       `,
     });
 
+    // 4. Get total waitlist count
+    const totalSnapshot = await waitlistRef.count().get();
+    const totalCount = totalSnapshot.data().count;
+
+    // 5. Send Discord notification
+    if (process.env.DISCORD_WEBHOOK_URL) {
+      await fetch(process.env.DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          embeds: [
+            {
+              title: '🎉 New Penny Waitlist Signup!',
+              color: 0x23c55e, // green
+              fields: [
+                {
+                  name: '📧 Email',
+                  value: email,
+                  inline: false,
+                },
+                {
+                  name: '👥 Total Signups',
+                  value: `**${totalCount}** people on the waitlist`,
+                  inline: false,
+                },
+                {
+                  name: '🕐 Joined At',
+                  value: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                  inline: false,
+                },
+              ],
+              footer: { text: 'Penny Waitlist' },
+            },
+          ],
+        }),
+      });
+    }
+
     return NextResponse.json({ message: "You're on the list! Check your email." }, { status: 200 });
 
   } catch (error: any) {
