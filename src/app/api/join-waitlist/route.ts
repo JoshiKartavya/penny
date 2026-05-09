@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import admin from 'firebase-admin';
-import { adminDb } from '@/lib/firebaseAdmin';
+import { getAdminDb } from '@/lib/firebaseAdmin';
 import nodemailer from 'nodemailer';
+
+// Force dynamic rendering — never statically generate this route
+export const dynamic = 'force-dynamic';
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -19,6 +22,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
+    const adminDb = getAdminDb();
     const waitlistRef = adminDb.collection('waitlist');
 
     // 1. Check for duplicate
